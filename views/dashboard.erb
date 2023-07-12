@@ -1,0 +1,72 @@
+<!-- dashboard.erb -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="/abc.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+  <main>
+
+    <h1>Welcome to the Dashboard!</h1>
+    
+    <div class="dummy-content">
+      <div class="dummy-item">
+        <img src="/dummy-image1.jpg" alt="Dummy Image 1">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    
+      <div class="dummy-item">
+        <img src="/dummy-image2.jpg" alt="Dummy Image 2">
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      
+      <div class="dummy-item">
+        <img src="/dummy-image3.jpg" alt="Dummy Image 3">
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  function showNotification(message) {
+    var notification = document.createElement('div');
+    notification.classList.add('notification');
+    notification.textContent = message;
+    document.body.appendChild(notification);
+  
+    // Add the 'show' class to display the notification
+    setTimeout(function() {
+      notification.classList.add('show');
+    }, 100);
+  
+    // Remove the notification after a certain duration
+    setTimeout(function() {
+      notification.classList.remove('show');
+      setTimeout(function() {
+        document.body.removeChild(notification);
+      }, 300);
+    }, 3000); 
+
+  }
+
+  </script>
+  <% if session[:login_success] %>
+  <script>showNotification('Login successful!');</script>
+  <% end %>
+</body>
+
+
+</html>

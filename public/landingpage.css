@@ -1,0 +1,136 @@
+/* Body styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #663399;
+    padding: 20px;
+    color: #052335;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  /* Hero section styles */
+  .hero {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #663399;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .btn:hover {
+    background-color: #f2f2f2;
+  }
+  
+  /* Services section styles */
+  #services {
+    background-color: #ffffff;
+    padding: 50px 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .service {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .service img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Portfolio section styles */
+  #portfolio {
+    background-color: #f2f2f2;
+    padding: 50px 0;
+  }
+  
+  .gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .gallery img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Contact section styles */
+  #contact {
+    background-color: #ffffff;
+    padding: 50px 0;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #663399;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #522d80;
+  }
+  

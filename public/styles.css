@@ -1,0 +1,59 @@
+/* styles.css */
+
+/* Body styles */
+
+body {
+  background-color: var(--bg-color);
+  font-family: "Sofia Pro", sans-serif;
+}
+
+/* Login form styles */
+form {
+  background-color: skyblue;
+  color: white;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 100px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="submit"] {
+  width: 93%;
+  padding: 10px;
+  margin-bottom: 2px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+}
+
+form input[type="submit"] {
+  cursor: pointer;
+  background-color: #4caf50;
+  margin-left: 10px;
+}
+
+form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+form .error {
+  color: red;
+  font-size: 12px;
+}
+
+.error-message {
+  margin-top: 5px; /* Add margin to separate from the input fields */
+}
+

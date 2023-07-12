@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+<style>
+</style>
+<link rel="stylesheet" href="/styles.css">
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Get form and input elements
+  const form = document.querySelector("form");
+  const usernameInput = document.getElementById("username");
+  const passwordInput = document.getElementById("password");
+  const usernameErrorElement = document.getElementById("username-error-message");
+  const passwordErrorElement = document.getElementById("password-error-message");
+
+  // Add submit event listener to the form
+  form.addEventListener("submit", function(event) {
+    // Perform validation
+    const isValid = validateCredentials(usernameInput.value, passwordInput.value);
+
+    if (!isValid) {
+      // Prevent form submission if validation fails
+      event.preventDefault();
+
+      // Apply red border to incorrect fields and display error messages
+      if (usernameInput.value.length < 8) {
+        usernameInput.classList.add("error");
+        usernameErrorElement.innerText = "Username should be at least 8 characters long.";
+      } else {
+        usernameInput.classList.remove("error");
+        usernameErrorElement.innerText = "";
+      }
+
+      if (passwordInput.value.length < 8 || !/[A-Z]/.test(passwordInput.value) || !/\d/.test(passwordInput.value)) {
+        passwordInput.classList.add("error");
+        passwordErrorElement.innerText = "Password should be at least 8 characters long and contain at least one uppercase letter and one digit.";
+      } else {
+        passwordInput.classList.remove("error");
+        passwordErrorElement.innerText = "";
+      }
+    }
+  });
+
+  // Validation function
+  function validateCredentials(username, password) {
+    const usernameRegex = /^.{8,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    return usernameRegex.test(username) && passwordRegex.test(password);
+  }
+}); 
+</script>
+  <style>
+  form .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px; /* Add margin to separate from the input fields */
+  }
+  </style>
+</head>
+<body>
+  <h1>Register</h1>
+  <form action="/register" method="post">
+    <% if @error_message %>
+      <p class="error"><%= @error_message %></p>
+    <% end %>
+   
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+    <p id="username-error-message" class="error"></p>
+    <br>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+    <p id="password-error-message" class="error"></p>
+    <br>
+    <input type="submit" value="Register">
+  </form>
+</body>
+</html>
+
+  
