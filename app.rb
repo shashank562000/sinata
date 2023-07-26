@@ -23,7 +23,15 @@ end
 post '/register' do
   @user = User.new(username: params[:username], password: params[:password])
 
-  if User.exists?(username: @user.username)
+  # Username validation: Check if it has more than 8 characters
+  if params[:username].length <= 8
+    @error_message = "Username must be greater than 8 characters."
+    erb :register
+  # Password validation: Check if it has at least 8 characters, 1 uppercase, 1 special character, and 1 number
+  elsif params[:password].length < 8 || !params[:password].match(/^(?=.*[A-Z])(?=.*[\W_])(?=.*\d)/)
+    @error_message = "Password must be at least 8 characters long and include 1 uppercase letter, 1 special character, and 1 number."
+    erb :register
+  elsif User.exists?(username: @user.username)
     @error_message = "User already exists."
     erb :register
   elsif @user.save
