@@ -57,3 +57,22 @@ form .error {
   margin-top: 5px; /* Add margin to separate from the input fields */
 }
 
+.notification {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  background-color: #037231;
+  color: #fff;
+  border-radius: 4px;
+  padding: 34px;
+  padding-left: 100px;
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.notification.show {
+  display: block;
+  opacity: 1;
+}
