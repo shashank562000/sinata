@@ -1,46 +1,25 @@
 require 'sinatra'
-require 'sinatra/flash'
 require 'mysql2'
 require 'sinatra/activerecord'
-require_relative 'database'
 require 'bcrypt'
 require 'pry'
+require_relative 'database'
+require_relative 'models/user'
+require_relative 'helpers' 
 
 enable :sessions
-register Sinatra::Flash
-
-# User model
-class User < ActiveRecord::Base
-  validates :username, presence: true, uniqueness: true
-  validates :password, presence: true
-  
-  # Encrypt the password before saving the user
-  before_save :encrypt_password
-  #Validat passwoard
-  def validate_password(submitted_password, encrypted_password)
-    # code
-    BCrypt::Password.new(encrypted_password) ==submitted_password
-
-  end
-
-  private
-  
-  def encrypt_password
-    self.password = BCrypt::Password.create(password)
-  end
-end
 
 # Homepage
 get '/' do
   erb :home
 end
 
-# Registration form
+# Show Registration Form
 get '/register' do
   erb :register
 end
 
-# Registration submission
+# Registration form submit
 post '/register' do
   @user = User.new(username: params[:username], password: params[:password])
 
@@ -55,13 +34,13 @@ post '/register' do
   end
 end
 
-# Login form
+#  Show Login form
 get '/login' do
   registration_success = true
   erb :login, locals: { registration_success: registration_success }
 end
 
-# Login submission
+# Login form submit
 post '/login' do
   @user = User.find_by(username: params[:username])
   if @user && @user.validate_password(params[:password], @user.password)
@@ -86,11 +65,6 @@ end
 get '/logout' do
   session.clear
   redirect '/'
-end
-
-# Helper method to check if user is logged in
-def logged_in?
-  !session[:user_id].nil?
 end
 
 get '/check_session' do
